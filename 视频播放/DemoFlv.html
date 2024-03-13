@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video</title>
+</head>
+<script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.js"></script>
+
+<body>
+    <div>
+        <video id="flvVideo" width="600" height="500" controls />
+    </div>
+
+    <script>
+        if (flvjs.isSupported()) {
+            var videoElement = document.getElementById('flvVideo');
+            var flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: 'http://172.16.4.9/live?port=1935&app=live&stream=1024',
+                isLive: false,
+                hasAudio: false,
+                hasVideo: true,
+                enableStashBuffer: false,
+                changeOrigin: true
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            flvPlayer.play();
+        }
+    </script>
+</body>
+
+</html>
